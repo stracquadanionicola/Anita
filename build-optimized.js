@@ -10,7 +10,7 @@ const essentialFiles = [
     'assets/js/anita-photos-clean.js', 
     'assets/js/photo-optimizer.js',
     'assets/js/wedding-album.js',
-    'assets/css/styles.css'
+    'assets/css/style.css'
 ];
 
 let buildSuccess = true;

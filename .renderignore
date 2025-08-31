@@ -1,0 +1,23 @@
+# File da escludere dal deployment Render.com per ridurre dimensioni
+
+# Foto grandi (182MB) - usare sistema fallback
+assets/images/anita/ricordi/*.png
+assets/images/anita/ricordi/*.PNG
+assets/images/anita/ricordi/*.heic
+assets/images/anita/ricordi/*.HEIC
+
+# File di sviluppo
+optimize-photos.js
+photo-build-report.json
+build-optimized.js
+
+# Directory temporanee
+node_modules/
+.git/
+
+# File di log
+*.log
+
+# File di backup
+*.backup
+*.bak
