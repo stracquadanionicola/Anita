@@ -1,0 +1,302 @@
+/* 🎯 CSS FIX DEFINITIVO - Album Anita e Nicola con Polaroid Style */
+
+/* DISABILITA TUTTI I PSEUDO-ELEMENTI CHE CAUSANO QUADRATI BIANCHI */
+*::before,
+*::after,
+.gallery-item::before,
+.gallery-item::after,
+.photo-frame::before,
+.photo-frame::after,
+.gallery-photo::before,
+.gallery-photo::after,
+.album-photo::before,
+.album-photo::after,
+.photo-container::before,
+.photo-container::after,
+.album-page::before,
+.album-page::after,
+.photo-item::before,
+.photo-item::after {
+    display: none !important;
+    content: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* HERO SECTION PERFETTA */
+.hero {
+    position: relative !important;
+    background: linear-gradient(135deg, #F5F5DC, #FAEBD7) !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 2rem !important;
+}
+
+.hero-content {
+    position: relative !important;
+    z-index: 10 !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
+}
+
+.hero h1 {
+    font-family: 'Great Vibes', cursive !important;
+    font-size: clamp(3rem, 8vw, 6rem) !important;
+    color: #8B4513 !important;
+    margin-bottom: 1.5rem !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1) !important;
+    line-height: 1.2 !important;
+}
+
+.hero p {
+    font-family: 'Playfair Display', serif !important;
+    font-size: clamp(1.2rem, 3vw, 1.8rem) !important;
+    color: #5D4037 !important;
+    margin-bottom: 2.5rem !important;
+    line-height: 1.6 !important;
+}
+
+.hero-btn, .cta-button {
+    background: linear-gradient(135deg, #8B4513, #A0522D) !important;
+    color: white !important;
+    padding: 1.2rem 2.5rem !important;
+    border: none !important;
+    border-radius: 50px !important;
+    font-size: 1.3rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3) !important;
+    font-family: 'Playfair Display', serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    position: relative !important;
+    z-index: 999 !important;
+    pointer-events: auto !important;
+}
+
+.hero-btn:hover, .cta-button:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 35px rgba(139, 69, 19, 0.4) !important;
+    background: linear-gradient(135deg, #A0522D, #CD853F) !important;
+}
+
+/* FORZA CLICK EVENTS SU TUTTO */
+.gallery-item,
+.photo-frame,
+.gallery-photo,
+.album-photo,
+.photo-container,
+.hero-btn,
+.cta-button,
+button,
+[onclick] {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    position: relative !important;
+    z-index: 999 !important;
+}
+
+/* ALBUM OVERLAY STYLES */
+.album-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.95) !important;
+    z-index: 999999 !important;
+    display: none !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s ease !important;
+}
+
+.album-overlay.active {
+    opacity: 1 !important;
+}
+
+.album-container {
+    position: relative !important;
+    width: 90% !important;
+    max-width: 1200px !important;
+    height: 80vh !important;
+    background: #8B4513 !important;
+    border-radius: 15px !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+    transform: scale(0.8) !important;
+    transition: transform 0.3s ease !important;
+}
+
+.album-overlay.active .album-container {
+    transform: scale(1) !important;
+}
+
+/* PHOTO VIEWER POLAROID STYLE */
+.photo-viewer-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.9) !important;
+    z-index: 9999999 !important;
+    display: none !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s ease !important;
+    backdrop-filter: blur(5px) !important;
+}
+
+.photo-viewer-overlay.active {
+    opacity: 1 !important;
+}
+
+.photo-viewer-container {
+    position: relative !important;
+    max-width: 500px !important;
+    background: white !important;
+    border-radius: 15px !important;
+    padding: 20px 20px 60px 20px !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8) !important;
+    transform: rotate(-2deg) scale(0.8) !important;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    border: 1px solid #ddd !important;
+}
+
+.photo-viewer-overlay.active .photo-viewer-container {
+    transform: rotate(0deg) scale(1) !important;
+}
+
+.photo-viewer-image {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    max-height: 60vh !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+    margin-bottom: 15px !important;
+}
+
+.photo-viewer-info {
+    text-align: center !important;
+    margin-bottom: 20px !important;
+}
+
+.photo-viewer-title {
+    font-family: 'Great Vibes', cursive !important;
+    font-size: 1.8rem !important;
+    color: #8B4513 !important;
+    margin-bottom: 8px !important;
+    font-weight: 400 !important;
+}
+
+.photo-viewer-description {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 0.95rem !important;
+    color: #5D4037 !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+}
+
+.photo-viewer-actions {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 15px !important;
+    margin-top: 20px !important;
+}
+
+.photo-action-btn {
+    background: linear-gradient(135deg, #8B4513, #A0522D) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 25px !important;
+    padding: 10px 20px !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    text-decoration: none !important;
+}
+
+.photo-action-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(139, 69, 19, 0.4) !important;
+    background: linear-gradient(135deg, #A0522D, #CD853F) !important;
+}
+
+.photo-action-btn i {
+    font-size: 1rem !important;
+}
+
+/* PULSANTI CHIUSURA */
+.album-close-btn,
+.photo-viewer-close {
+    position: absolute !important;
+    top: -15px !important;
+    right: -15px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 2px solid #ddd !important;
+    border-radius: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    font-size: 1.2rem !important;
+    color: #333 !important;
+    transition: all 0.3s ease !important;
+    z-index: 999999 !important;
+    pointer-events: auto !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+.album-close-btn:hover,
+.photo-viewer-close:hover {
+    background: #ff4757 !important;
+    color: white !important;
+    border-color: #ff4757 !important;
+    transform: scale(1.1) !important;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3rem !important;
+    }
+    
+    .hero p {
+        font-size: 1.2rem !important;
+    }
+    
+    .hero-btn {
+        padding: 1rem 2rem !important;
+        font-size: 1.1rem !important;
+    }
+    
+    .album-container {
+        width: 95% !important;
+        height: 90vh !important;
+    }
+    
+    .photo-viewer-container {
+        max-width: 90vw !important;
+        margin: 20px !important;
+    }
+    
+    .photo-action-btn {
+        padding: 8px 15px !important;
+        font-size: 0.8rem !important;
+    }
+}
