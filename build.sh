@@ -23,7 +23,12 @@ fi
 FOTO_COUNT=$(find assets/images/anita/ricordi/ -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.heic" 2>/dev/null | wc -l)
 echo "📸 Foto trovate: $FOTO_COUNT"
 
-# Verifica file JavaScript
+# Avviso se ci sono poche foto (ma non fallisce il build)
+if [ "$FOTO_COUNT" -lt 20 ]; then
+    echo "⚠️ Poche foto trovate, verrà usato il sistema di fallback con foto demo"
+fi
+
+# Verifica file JavaScript essenziali
 if [ -f "assets/js/wedding-album.js" ]; then
     echo "✅ wedding-album.js trovato"
 else
@@ -38,5 +43,13 @@ else
     exit 1
 fi
 
+if [ -f "assets/js/demo-photos.js" ]; then
+    echo "✅ demo-photos.js trovato (sistema di fallback)"
+else
+    echo "❌ demo-photos.js mancante"
+    exit 1
+fi
+
 echo "🎉 Build completato con successo!"
 echo "📦 Il sito è pronto per il deployment"
+echo "🔧 Sistema di fallback attivo per gestire foto mancanti"
