@@ -1,0 +1,80 @@
+/* 🔧 FIX ULTRA-RAPIDO: Disabilita stili problematici che causano quadrati bianchi */
+
+/* RIMUOVI TUTTI GLI OVERLAY E PSEUDO-ELEMENTI DALLE FOTO */
+.photo-item::before,
+.photo-item::after {
+    display: none !important;
+    content: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* SEMPLIFICA HOVER DELLE FOTO */
+.photo-item:hover {
+    transform: scale(1.02) !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+    transition: all 0.15s ease !important;
+}
+
+/* RIMUOVI TRASFORMAZIONI COMPLESSE SULLE IMMAGINI */
+.photo-item:hover img {
+    transform: none !important;
+    filter: brightness(1) contrast(1) !important;
+}
+
+/* SEMPLIFICA CONTAINER FOTO */
+.photo-container {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 15px !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.photo-container::before,
+.photo-container::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* IMMAGINI PULITE SENZA INTERFERENZE */
+.photo-item img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    pointer-events: none !important;
+    transition: opacity 0.2s ease !important;
+}
+
+/* ELIMINA TUTTI I BACKGROUND OVERLAY */
+.photo-item .photo-overlay,
+.photo-item .overlay,
+.photo-item .hover-overlay {
+    display: none !important;
+}
+
+/* CURSORE POINTER SOLO SUL CONTAINER */
+.photo-container {
+    cursor: pointer !important;
+}
+
+.photo-item img {
+    cursor: inherit !important;
+}
+
+/* NESSUNA ANIMAZIONE COMPLESSA */
+.photo-item {
+    transition: transform 0.15s ease !important;
+}
+
+/* MOBILE: ancora più semplice */
+@media (max-width: 768px) {
+    .photo-item:hover {
+        transform: scale(1.01) !important;
+    }
+}
