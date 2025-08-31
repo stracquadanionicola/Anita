@@ -1,0 +1,53 @@
+# Dependency directories
+node_modules/
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Logs
+logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+
+# Environment variables
+.env
+.env.local
+
+# Cache
+.cache/
+
+# Build outputs
+dist/
+build/
+
+# Backup files
+*~
+*.bak
+README-old.md
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo

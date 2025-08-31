@@ -1,0 +1,17 @@
+{
+  "name": "anita-nicola-album",
+  "version": "1.0.0",
+  "description": "Album fotografico matrimoniale di Anita e Nicola",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server $PORT",
+    "dev": "python3 -m http.server 8080"
+  },
+  "keywords": ["wedding", "album", "photos", "matrimonio"],
+  "author": "Nicola",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0",
+    "python": ">=3.7.0"
+  }
+}

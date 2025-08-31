@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="it-IT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anita e Nicola - Test Pulito</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&family=Allura:wght@400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Essenziale -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        
+        .main-container {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .main-title {
+            font-size: 4rem;
+            font-family: 'Allura', cursive;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b9d, #ffd93d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .open-book-btn {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .open-book-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
+        }
+        
+        .test-info {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .status.success { background: #4CAF50; }
+        .status.error { background: #f44336; }
+        .status.info { background: #2196F3; }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1 class="main-title">Te Quiero</h1>
+        <p class="subtitle">Album fotografico di Anita e Nicola</p>
+        
+        <button class="open-book-btn" onclick="openSpectacularPresentation()">
+            📖 Apri il Libro
+        </button>
+        
+        <div class="test-info">
+            <h3>Status Sistema:</h3>
+            <div id="status-container">
+                <span class="status info">Caricamento...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/anita-photos-real.js"></script>
+    <script src="assets/js/simple-album.js"></script>
+    
+    <script>
+        // Script di test integrato
+        function updateStatus() {
+            const container = document.getElementById('status-container');
+            let status = '';
+            
+            // Test anitaPhotos
+            if (typeof anitaPhotos !== 'undefined' && anitaPhotos.length > 0) {
+                status += `<span class="status success">anitaPhotos: ${anitaPhotos.length} foto</span>`;
+            } else {
+                status += `<span class="status error">anitaPhotos: non caricato</span>`;
+            }
+            
+            // Test simpleAlbum
+            if (typeof simpleAlbum !== 'undefined') {
+                status += `<span class="status success">simpleAlbum: OK</span>`;
+            } else {
+                status += `<span class="status error">simpleAlbum: non caricato</span>`;
+            }
+            
+            // Test openSpectacularPresentation
+            if (typeof openSpectacularPresentation === 'function') {
+                status += `<span class="status success">openSpectacularPresentation: OK</span>`;
+            } else {
+                status += `<span class="status error">openSpectacularPresentation: non trovata</span>`;
+            }
+            
+            container.innerHTML = status;
+        }
+        
+        // Aggiorna status dopo caricamento
+        setTimeout(updateStatus, 500);
+        
+        // Error handling
+        window.addEventListener('error', function(e) {
+            console.error('Errore:', e.message, 'File:', e.filename, 'Linea:', e.lineno);
+            document.getElementById('status-container').innerHTML += 
+                `<span class="status error">Errore: ${e.message}</span>`;
+        });
+        
+        console.log('🔧 Pagina di test pulita caricata');
+    </script>
+</body>
+</html>

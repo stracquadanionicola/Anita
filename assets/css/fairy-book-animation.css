@@ -1,0 +1,277 @@
+/* 
+ * Album Fotografico Realistico - Stile Matrimonio
+ * Pagine che si sfogliano con foto integrate
+ */
+
+.photo-album-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #f5f3f0 0%, #e8e2d4 100%);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.8s ease;
+    font-family: 'Playfair Display', serif;
+}
+
+.photo-album-viewer.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.album-container {
+    position: relative;
+    width: 90vw;
+    max-width: 1000px;
+    height: 70vh;
+    max-height: 700px;
+    perspective: 2000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.album-book {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+.album-page {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: #fffef8;
+    border: 1px solid #d4c4a8;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 
+        inset 0 0 30px rgba(212, 196, 168, 0.3),
+        2px 0 15px rgba(0, 0, 0, 0.1);
+    transform-origin: left center;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    backface-visibility: hidden;
+}
+
+.album-page.left {
+    right: 50%;
+    border-radius: 8px 0 0 8px;
+    transform-origin: right center;
+    box-shadow: 
+        inset 0 0 30px rgba(212, 196, 168, 0.3),
+        -2px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.album-page.turning {
+    transform: rotateY(-180deg);
+    z-index: 10;
+}
+
+.album-page.left.turning {
+    transform: rotateY(180deg);
+}
+
+/* Contenuto della pagina */
+.page-content {
+    padding: 40px 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.page-photo-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.page-photo {
+    max-width: 90%;
+    max-height: 70%;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.15),
+        0 0 0 3px #fff,
+        0 0 0 4px #d4c4a8;
+    transition: transform 0.3s ease;
+}
+
+.page-photo:hover {
+    transform: scale(1.02);
+}
+
+.page-description {
+    text-align: center;
+    padding: 15px 10px;
+}
+
+.page-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #8b4513;
+    margin-bottom: 8px;
+    font-family: 'Dancing Script', cursive;
+}
+
+.page-text {
+    font-size: 0.95rem;
+    color: #a0522d;
+    line-height: 1.4;
+    font-style: italic;
+}
+
+.page-spanish {
+    font-size: 0.85rem;
+    color: #c44ed0;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+/* Spine del libro */
+.album-spine {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    background: linear-gradient(to right, #8b4513, #a0522d, #8b4513);
+    transform: translateX(-50%);
+    border-radius: 0;
+    box-shadow: 
+        inset 0 0 10px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(139, 69, 19, 0.4);
+    z-index: -1;
+}
+
+/* Controlli */
+.album-controls {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 100;
+}
+
+.album-control-btn {
+    background: rgba(139, 69, 19, 0.9);
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+}
+
+.album-control-btn:hover {
+    background: rgba(139, 69, 19, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
+}
+
+.album-control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.album-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(139, 69, 19, 0.9);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.album-close-btn:hover {
+    background: rgba(139, 69, 19, 1);
+    transform: scale(1.1);
+}
+
+/* Progress indicator */
+.album-progress {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #8b4513;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Animazioni di entrata */
+@keyframes albumOpen {
+    0% {
+        transform: scale(0.3) rotateY(-30deg);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+.album-book.opening {
+    animation: albumOpen 1s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .album-container {
+        width: 95vw;
+        height: 80vh;
+    }
+    
+    .page-content {
+        padding: 20px 15px;
+    }
+    
+    .page-title {
+        font-size: 1.1rem;
+    }
+    
+    .page-text {
+        font-size: 0.85rem;
+    }
+    
+    .album-controls {
+        bottom: 20px;
+        gap: 15px;
+    }
+    
+    .album-control-btn {
+        padding: 10px 12px;
+        font-size: 1rem;
+    }
+}

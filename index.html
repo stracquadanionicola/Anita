@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="it-IT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anita e Nicola</title>
+    <meta name="description" content="Un libro fotografico digitale romantico per Anita con i nostri momenti più belli. Creato con amore.">
+    <meta name="keywords" content="book fotografico, amore, foto, coppia, romantico, Anita, slideshow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Il Nostro Book Fotografico d'Amore">
+    <meta property="og:description" content="Un libro fotografico digitale romantico per Anita con i nostri momenti più belli. Creato con amore.">
+    <meta property="og:image" content="">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Il Nostro Book Fotografico d'Amore">
+    <meta name="twitter:description" content="Un libro fotografico digitale romantico per Anita con i nostri momenti più belli.">
+    <meta name="twitter:image" content="">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&family=Alex+Brush&family=Allura:wght@400&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/photobook.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <i class="fas fa-heart loading-heart"></i>
+            <p>Caricando le nostre foto...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <nav class="nav" role="navigation" aria-label="Navigazione principale">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-heart"></i>
+                    <span class="logo-text">Anita e Nicola</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                                <ul class="nav-menu" role="menu">
+                    <li role="none"><a href="#hero" role="menuitem">Home</a></li>
+                    <li role="none"><a href="#photos" role="menuitem">Foto</a></li>
+                    <li role="none"><a href="#upload" role="menuitem">Carica</a></li>
+                </ul>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="nav-toggle" aria-label="Apri menu di navigazione" aria-expanded="false">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Copertina Section -->
+        <section id="copertina" class="copertina" role="banner">
+            <div class="copertina-background">
+                <div class="background-hearts">
+                    <i class="fas fa-heart heart-1"></i>
+                    <i class="fas fa-heart heart-2"></i>
+                    <i class="fas fa-heart heart-3"></i>
+                    <i class="fas fa-heart heart-4"></i>
+                    <i class="fas fa-heart heart-5"></i>
+                </div>
+            </div>
+            <div class="copertina-content" data-aos="fade-in-up">
+                <div class="book-cover">
+                    <h1 class="book-title">Te Quiero</h1>
+                    <p class="book-subtitle">Una raccolta dei nostri momenti</p>
+                    <p class="spanish-quote">"Eres mi lugar favorito"</p>
+                    <div class="book-info">
+                        <!-- Info rimossa su richiesta -->
+                    </div>
+                    <button class="open-book-btn" onclick="openSpectacularPresentation()" aria-label="Apri il libro">
+                        <i class="fas fa-book-open"></i>
+                        Apri il Libro
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery-section" data-aos="fade-up">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-images"></i>
+                    La Nostra Galleria
+                </h2>
+                <p class="spanish-quote">"Cada foto cuenta nuestra historia de amor"</p>
+                
+                <!-- Filtri -->
+                <div class="gallery-filters">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-th"></i>
+                        Tutte
+                    </button>
+                    <button class="filter-btn" data-filter="selfie">
+                        <i class="fas fa-camera"></i>
+                        Selfie
+                    </button>
+                    <button class="filter-btn" data-filter="viaggio">
+                        <i class="fas fa-plane"></i>
+                        Viaggi
+                    </button>
+                    <button class="filter-btn" data-filter="casa">
+                        <i class="fas fa-home"></i>
+                        A Casa
+                    </button>
+                    <button class="filter-btn" data-filter="speciale">
+                        <i class="fas fa-star"></i>
+                        Momenti Speciali
+                    </button>
+                </div>
+                
+                <!-- Griglia foto -->
+                <div id="photo-gallery" class="photo-grid">
+                    <!-- Le foto verranno caricate dinamicamente qui -->
+                    <div class="loading-gallery" id="loading-gallery">
+                        <i class="fas fa-heart"></i>
+                        <p>Caricando le nostre foto...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Memories Timeline -->
+                    </div>
+        </section>
+
+        <!-- Upload Section -->
+
+        <!-- Lettere d'Amore Section -->
+                    </div>
+        </section>
+
+        <!-- Upload Section -->
+        <section id="upload" class="upload-section" data-aos="fade-up">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-camera"></i>
+                    Aggiungi una Nuova Foto
+                </h2>
+                <p class="section-subtitle">Carica le tue foto più belle e crea il nostro album d'amore</p>
+                
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-content">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <h3>Trascina le foto qui o clicca per selezionare</h3>
+                        <p>Supporta JPG, PNG, GIF (max 10MB per foto)</p>
+                        <input type="file" id="photo-input" multiple accept="image/*" style="display: none;">
+                        <button class="upload-btn" onclick="document.getElementById('photo-input').click()">
+                            <i class="fas fa-plus"></i>
+                            Seleziona Foto
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preview delle foto caricate -->
+                <div id="upload-preview" class="upload-preview" style="display: none;">
+                    <h3>Foto da aggiungere:</h3>
+                    <div id="preview-container" class="preview-container"></div>
+                    <div class="upload-actions">
+                        <button class="btn-secondary" onclick="clearPreview()">
+                            <i class="fas fa-times"></i>
+                            Annulla
+                        </button>
+                        <button class="btn-primary" onclick="savePhotos()">
+                            <i class="fas fa-heart"></i>
+                            Salva nel Nostro Album
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Viewer Modal -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">Il nostro amore cresce con ogni ricordo condiviso</p>
+                <p class="spanish-quote">"Juntos para siempre, amor infinito"</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modali -->
+    <!-- Modal per aggiungere ricordo -->
+    <div id="memory-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-heart"></i> Aggiungi un Ricordo</h3>
+                <button class="modal-close" onclick="closeMemoryModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="memory-form">
+                    <div class="form-group">
+                        <label for="memory-date">Data del ricordo:</label>
+                        <input type="date" id="memory-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="memory-title">Titolo:</label>
+                        <input type="text" id="memory-title" placeholder="Es: La nostra prima cena romantica" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="memory-description">Descrizione:</label>
+                        <textarea id="memory-description" rows="4" placeholder="Racconta questo momento speciale..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="memory-photo">Foto (opzionale):</label>
+                        <input type="file" id="memory-photo" accept="image/*">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeMemoryModal()">Annulla</button>
+                <button class="btn-primary" onclick="saveMemory()">
+                    <i class="fas fa-heart"></i>
+                    Salva Ricordo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal per scrivere lettera -->
+    <div id="letter-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-envelope-heart"></i> Scrivi una Lettera d'Amore</h3>
+                <button class="modal-close" onclick="closeLetterModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="letter-form">
+                    <div class="form-group">
+                        <label for="letter-title">Titolo della lettera:</label>
+                        <input type="text" id="letter-title" placeholder="Es: Il mio amore per te" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="letter-content">Contenuto:</label>
+                        <textarea id="letter-content" rows="6" placeholder="Scrivi qui la tua lettera d'amore..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="letter-spanish">Frase romantica in spagnolo (opzionale):</label>
+                        <input type="text" id="letter-spanish" placeholder="Es: Eres el amor de mi vida">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeLetterModal()">Annulla</button>
+                <button class="btn-primary" onclick="saveLetter()">
+                    <i class="fas fa-heart"></i>
+                    Salva Lettera
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal per visualizzare foto -->
+    <div id="photo-modal" class="modal photo-modal">
+        <div class="photo-modal-content">
+            <button class="modal-close photo-close" onclick="closePhotoModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="photo-modal-img" src="" alt="">
+            <div class="photo-modal-info">
+                <h3 id="photo-modal-title"></h3>
+                <p id="photo-modal-date"></p>
+                <div class="photo-modal-actions">
+                    <button class="btn-outline" onclick="downloadPhoto()">
+                        <i class="fas fa-download"></i>
+                        Scarica
+                    </button>
+                    <button class="btn-danger" onclick="deletePhoto()">
+                        <i class="fas fa-trash"></i>
+                        Elimina
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/anita-photos-clean.js"></script>
+    <script src="assets/js/wedding-album.js"></script>
+    <script>
+        // Inizializzazione e rimozione schermata di caricamento
+        console.log('🔧 Script di inizializzazione caricato');
+        
+        // Forza rimozione loading immediata se troppo lenta
+        setTimeout(function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                console.log('🔧 Forzo rimozione loading screen (2 secondi)');
+                loadingScreen.style.opacity = '0';
+                loadingScreen.style.transition = 'opacity 0.3s ease-out';
+                
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                    console.log('✅ Loading screen rimosso (forzato)');
+                }, 300);
+            }
+        }, 2000);
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔧 DOM caricato - inizializzando...');
+            
+            // Rimuovi loading screen dopo DOM ready
+            setTimeout(function() {
+                const loadingScreen = document.getElementById('loading-screen');
+                if (loadingScreen && loadingScreen.style.display !== 'none') {
+                    console.log('🔧 Rimuovo loading screen (DOM ready)');
+                    loadingScreen.style.opacity = '0';
+                    loadingScreen.style.transition = 'opacity 0.5s ease-out';
+                    
+                    setTimeout(function() {
+                        loadingScreen.style.display = 'none';
+                        console.log('✅ Loading screen rimosso (DOM ready)');
+                    }, 500);
+                }
+            }, 500);
+            
+            // Inizializza AOS se disponibile
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 700,
+                    easing: 'ease-out-cubic',
+                    once: true,
+                    offset: 100
+                });
+                console.log('✅ AOS inizializzato');
+            }
+            
+            // Verifica caricamento componenti
+            setTimeout(function() {
+                if (typeof anitaPhotos !== 'undefined') {
+                    console.log('✅ anitaPhotos caricato:', anitaPhotos.length, 'foto');
+                } else {
+                    console.warn('⚠️ anitaPhotos non caricato');
+                }
+                
+                if (typeof simpleAlbum !== 'undefined') {
+                    console.log('✅ simpleAlbum inizializzato');
+                } else {
+                    console.warn('⚠️ simpleAlbum non inizializzato');
+                }
+                
+                if (typeof openSpectacularPresentation === 'function') {
+                    console.log('✅ openSpectacularPresentation pronto');
+                } else {
+                    console.warn('⚠️ openSpectacularPresentation non trovato');
+                }
+            }, 1000);
+        });
+        
+        // Backup: forza rimozione loading al caricamento completo della pagina
+        window.addEventListener('load', function() {
+            console.log('🔧 Window load event - controllo loading screen');
+            setTimeout(function() {
+                const loadingScreen = document.getElementById('loading-screen');
+                if (loadingScreen && loadingScreen.style.display !== 'none') {
+                    console.log('🔧 Forzo rimozione finale loading screen');
+                    loadingScreen.style.display = 'none';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

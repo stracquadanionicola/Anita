@@ -1,0 +1,239 @@
+/* 
+   ARCHIVO DE PERSONALIZACIÓN RÁPIDA
+   
+   Este archivo contiene todas las variables que puedes cambiar fácilmente
+   para personalizar tu sitio de amor sin tocar el código principal.
+*/
+
+/* ====================================
+   🎨 COLORES Y TEMA
+   ==================================== */
+
+:root {
+    /* Colores principales - Cambia estos para un tema diferente */
+    --primary: #D96D8A;        /* Rosa romántico */
+    --accent: #F7C9D9;         /* Rosa claro */
+    --bg: #FFFFFF;             /* Fondo blanco */
+    --text: #222222;           /* Texto oscuro */
+    --text-light: #666666;     /* Texto secundario */
+    --border: #E5E5E5;         /* Bordes */
+    
+    /* Temas alternativos - Descomenta el que prefieras */
+    
+    /* Tema Sunset (Atardecer) */
+    /*
+    --primary: #FF6B6B;
+    --accent: #FFE0E0;
+    --bg: #FFF8F8;
+    --text: #2C2C2C;
+    */
+    
+    /* Tema Ocean (Océano) */
+    /*
+    --primary: #4ECDC4;
+    --accent: #E0F7FA;
+    --bg: #FAFFFE;
+    --text: #2C2C2C;
+    */
+    
+    /* Tema Purple Love (Amor púrpura) */
+    /*
+    --primary: #9B59B6;
+    --accent: #E8D5E8;
+    --bg: #FDFBFD;
+    --text: #2C2C2C;
+    */
+    
+    /* Tema Golden (Dorado) */
+    /*
+    --primary: #F39C12;
+    --accent: #FEF5E7;
+    --bg: #FFFEF9;
+    --text: #2C2C2C;
+    */
+}
+
+/* ====================================
+   📝 TIPOGRAFÍAS
+   ==================================== */
+
+:root {
+    /* Fuentes por defecto */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    
+    /* Fuentes alternativas - Descomenta para cambiar */
+    
+    /* Opción 1: Más romántica */
+    /*
+    --font-heading: 'Dancing Script', cursive;
+    --font-body: 'Lora', serif;
+    */
+    
+    /* Opción 2: Moderna y limpia */
+    /*
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Source Sans Pro', sans-serif;
+    */
+    
+    /* Opción 3: Elegante y clásica */
+    /*
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Open Sans', sans-serif;
+    */
+}
+
+/* ====================================
+   🎬 CONFIGURACIÓN DE ANIMACIONES
+   ==================================== */
+
+:root {
+    /* Velocidad de animaciones */
+    --animation-speed: 0.7s;        /* Normal */
+    /* --animation-speed: 0.4s; */   /* Rápida */
+    /* --animation-speed: 1.2s; */   /* Lenta */
+    
+    /* Tipo de transición */
+    --transition: all 0.3s ease-out;
+}
+
+/* ====================================
+   📐 ESPACIADO Y BORDES
+   ==================================== */
+
+:root {
+    /* Radio de bordes */
+    --radius: 12px;           /* Redondeado suave */
+    /* --radius: 0px; */      /* Sin redondeado */
+    /* --radius: 20px; */     /* Muy redondeado */
+    
+    /* Sombras */
+    --shadow: 0 4px 20px rgba(217, 109, 138, 0.1);
+    --shadow-hover: 0 8px 30px rgba(217, 109, 138, 0.2);
+    
+    /* Espaciado de secciones */
+    --section-padding: 5rem 0;
+}
+
+/* ====================================
+   🖼️ CONFIGURACIÓN DEL HERO
+   ==================================== */
+
+.hero {
+    /* Altura del hero */
+    min-height: 100vh;        /* Pantalla completa */
+    /* min-height: 80vh; */   /* Un poco más pequeño */
+    /* min-height: 60vh; */   /* Más compacto */
+    
+    /* Posición del texto */
+    text-align: center;       /* Centrado */
+    /* text-align: left; */   /* Izquierda */
+    /* text-align: right; */  /* Derecha */
+}
+
+/* Personalización del overlay del hero */
+.hero-overlay {
+    /* Intensidad del filtro oscuro sobre la imagen */
+    background: linear-gradient(90deg, rgba(0,0,0,0.35), rgba(0,0,0,0.15));
+    
+    /* Opciones alternativas */
+    /* background: rgba(0,0,0,0.4); */                    /* Overlay uniforme */
+    /* background: linear-gradient(45deg, rgba(217,109,138,0.3), rgba(0,0,0,0.2)); */ /* Con tinte de color */
+    /* background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)); */   /* Degradado vertical */
+}
+
+/* ====================================
+   📱 CONFIGURACIÓN MÓVIL
+   ==================================== */
+
+/* Tamaños de texto en móvil */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.2rem;      /* Título del hero en móvil */
+    }
+    
+    .section-title {
+        font-size: 1.8rem;      /* Títulos de sección en móvil */
+    }
+    
+    section {
+        padding: 3rem 0;        /* Espaciado de secciones en móvil */
+    }
+}
+
+/* ====================================
+   🎵 CONFIGURACIÓN DE LA PLAYLIST
+   ==================================== */
+
+.spotify-embed iframe {
+    /* Altura del reproductor de Spotify */
+    height: 352px;            /* Estándar */
+    /* height: 232px; */      /* Compacto */
+    /* height: 500px; */      /* Grande */
+    
+    border-radius: var(--radius);
+}
+
+/* ====================================
+   💌 CONFIGURACIÓN DE NOTAS
+   ==================================== */
+
+.note-card {
+    /* Estilo de las tarjetas de notas */
+    background: white;
+    
+    /* Opciones alternativas */
+    /* background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%); */ /* Con gradiente */
+    /* background: var(--accent); */                                   /* Con color de acento */
+    
+    /* Padding interno */
+    padding: 2rem;            /* Espacioso */
+    /* padding: 1.5rem; */    /* Compacto */
+    
+    /* Altura de las tarjetas */
+    min-height: auto;         /* Altura automática */
+    /* min-height: 200px; */  /* Altura fija */
+}
+
+/* ====================================
+   🖼️ CONFIGURACIÓN DE GALERÍA
+   ==================================== */
+
+.gallery-grid {
+    /* Número de columnas en escritorio */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    
+    /* Opciones alternativas */
+    /* grid-template-columns: repeat(2, 1fr); */  /* Siempre 2 columnas */
+    /* grid-template-columns: repeat(4, 1fr); */  /* Siempre 4 columnas */
+    
+    gap: 2rem;                /* Espacio entre imágenes */
+    /* gap: 1rem; */          /* Menos espacio */
+    /* gap: 3rem; */          /* Más espacio */
+}
+
+.gallery-item {
+    /* Proporción de las imágenes */
+    aspect-ratio: 4/3;        /* Rectangular horizontal */
+    /* aspect-ratio: 1/1; */  /* Cuadrado */
+    /* aspect-ratio: 3/4; */  /* Rectangular vertical */
+}
+
+/* ====================================
+   📝 INSTRUCCIONES DE USO
+   ==================================== */
+
+/*
+  CÓMO USAR ESTE ARCHIVO:
+  
+  1. Descomenta las líneas que quieras usar (quita los comentarios)
+  2. Comenta las líneas que no quieras usar
+  3. Guarda el archivo y recarga tu página para ver los cambios
+  4. Experimenta con diferentes combinaciones
+  
+  EJEMPLO:
+  Para cambiar al tema "Sunset", descomenta las líneas del tema Sunset
+  en la sección de colores principales y comenta el tema por defecto.
+  
+  ¡Diviértete personalizando tu sitio de amor! 💕
+*/

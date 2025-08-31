@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="it-IT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Loading - Anita e Nicola</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Debug Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .loading-content {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading-heart {
+            font-size: 4rem;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { 
+                transform: scale(1);
+            }
+            50% { 
+                transform: scale(1.15);
+            }
+        }
+
+        .debug-info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.5);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .debug-line {
+            margin: 5px 0;
+        }
+
+        .success { color: #4CAF50; }
+        .error { color: #f44336; }
+        .info { color: #2196F3; }
+
+        .main-content {
+            display: none;
+            padding: 40px;
+            text-align: center;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        .test-button {
+            background: #ff6b9d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="debug-info" id="debug-info">
+            <div class="debug-line info">🔧 Caricamento in corso...</div>
+        </div>
+        
+        <div class="loading-content">
+            <i class="fas fa-heart loading-heart"></i>
+            <p>Caricando le nostre foto...</p>
+            <p><small>Debug Mode Attivo</small></p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="main-content">
+        <h1>✅ Caricamento Completato!</h1>
+        <p>Il sito è pronto per l'uso</p>
+        
+        <button class="test-button" onclick="testAlbum()">
+            📖 Test Album
+        </button>
+        
+        <button class="test-button" onclick="showLoading()">
+            🔄 Mostra Loading
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/anita-photos-clean.js"></script>
+    <script src="assets/js/simple-album.js"></script>
+    
+    <script>
+        let debugInfo = document.getElementById('debug-info');
+        let loadingScreen = document.getElementById('loading-screen');
+        let mainContent = document.getElementById('main-content');
+        
+        function addDebugLine(message, type = 'info') {
+            const line = document.createElement('div');
+            line.className = `debug-line ${type}`;
+            line.textContent = `${new Date().toLocaleTimeString()} - ${message}`;
+            debugInfo.appendChild(line);
+            console.log(message);
+        }
+        
+        function hideLoading() {
+            addDebugLine('Nascondendo schermata di caricamento...', 'info');
+            
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.transition = 'opacity 0.5s ease-out';
+            
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+                mainContent.style.display = 'block';
+                addDebugLine('Schermata di caricamento nascosta!', 'success');
+            }, 500);
+        }
+        
+        function showLoading() {
+            loadingScreen.style.display = 'flex';
+            loadingScreen.style.opacity = '1';
+            mainContent.style.display = 'none';
+            
+            setTimeout(hideLoading, 2000);
+        }
+        
+        function testAlbum() {
+            if (typeof openSpectacularPresentation === 'function') {
+                openSpectacularPresentation();
+            } else {
+                alert('❌ Album non disponibile');
+            }
+        }
+        
+        // Processo di caricamento
+        document.addEventListener('DOMContentLoaded', function() {
+            addDebugLine('DOM caricato', 'success');
+            
+            // Test 1: anitaPhotos
+            setTimeout(() => {
+                if (typeof anitaPhotos !== 'undefined') {
+                    addDebugLine(`✅ anitaPhotos: ${anitaPhotos.length} foto`, 'success');
+                } else {
+                    addDebugLine('❌ anitaPhotos: non caricato', 'error');
+                }
+            }, 100);
+            
+            // Test 2: simpleAlbum
+            setTimeout(() => {
+                if (typeof simpleAlbum !== 'undefined') {
+                    addDebugLine('✅ simpleAlbum: OK', 'success');
+                } else {
+                    addDebugLine('❌ simpleAlbum: non caricato', 'error');
+                }
+            }, 200);
+            
+            // Test 3: openSpectacularPresentation
+            setTimeout(() => {
+                if (typeof openSpectacularPresentation === 'function') {
+                    addDebugLine('✅ openSpectacularPresentation: OK', 'success');
+                } else {
+                    addDebugLine('❌ openSpectacularPresentation: non trovato', 'error');
+                }
+            }, 300);
+            
+            // Nascondi loading dopo test
+            setTimeout(() => {
+                addDebugLine('Tutti i test completati', 'info');
+                setTimeout(hideLoading, 1000);
+            }, 1000);
+        });
+        
+        // Forza nascondere loading dopo 5 secondi
+        setTimeout(() => {
+            if (loadingScreen.style.display !== 'none') {
+                addDebugLine('⚠️ Forzo rimozione loading (timeout)', 'error');
+                hideLoading();
+            }
+        }, 5000);
+        
+        addDebugLine('Debug script inizializzato', 'info');
+    </script>
+</body>
+</html>

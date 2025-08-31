@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Album - Debug</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        button { padding: 10px 20px; margin: 10px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        #console-output { background: #000; color: #00ff00; padding: 10px; font-family: monospace; height: 300px; overflow-y: scroll; }
+    </style>
+</head>
+<body>
+    <h1>🔧 Test Album Fotografico - Debug</h1>
+    
+    <div class="test-section info">
+        <h3>Test di Caricamento</h3>
+        <button onclick="testLoadAnita()">Test anitaPhotos</button>
+        <button onclick="testOpenFunction()">Test openSpectacularPresentation</button>
+        <button onclick="testAlbum()">Test Album</button>
+        <button onclick="clearConsole()">Pulisci Console</button>
+    </div>
+    
+    <div class="test-section">
+        <h3>Console Output:</h3>
+        <div id="console-output"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>Album di Test:</h3>
+        <button onclick="openSpectacularPresentation()" style="background: #ff6b9d; font-size: 1.2rem;">
+            📖 Apri il Libro
+        </button>
+    </div>
+
+    <!-- Script di test -->
+    <script>
+        // Override console.log per mostrare output
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+        const output = document.getElementById('console-output');
+        
+        function addToConsole(message, type = 'log') {
+            const time = new Date().toLocaleTimeString();
+            const color = type === 'error' ? '#ff6b6b' : type === 'warn' ? '#ffa500' : '#00ff00';
+            output.innerHTML += `<div style="color: ${color}">[${time}] ${message}</div>`;
+            output.scrollTop = output.scrollHeight;
+        }
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addToConsole(args.join(' '), 'log');
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addToConsole('ERROR: ' + args.join(' '), 'error');
+        };
+        
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            addToConsole('WARN: ' + args.join(' '), 'warn');
+        };
+        
+        function clearConsole() {
+            output.innerHTML = '';
+        }
+        
+        function testLoadAnita() {
+            console.log('🧪 Testing anitaPhotos loading...');
+            if (typeof anitaPhotos !== 'undefined') {
+                console.log(`✅ anitaPhotos loaded: ${anitaPhotos.length} photos`);
+                console.log('First photo:', anitaPhotos[0]);
+            } else {
+                console.error('❌ anitaPhotos not loaded');
+            }
+        }
+        
+        function testOpenFunction() {
+            console.log('🧪 Testing openSpectacularPresentation...');
+            if (typeof openSpectacularPresentation === 'function') {
+                console.log('✅ openSpectacularPresentation function exists');
+            } else {
+                console.error('❌ openSpectacularPresentation function not found');
+            }
+        }
+        
+        function testAlbum() {
+            console.log('🧪 Testing simpleAlbum...');
+            if (typeof simpleAlbum !== 'undefined') {
+                console.log('✅ simpleAlbum object exists');
+                console.log('Photos loaded:', simpleAlbum.photos ? simpleAlbum.photos.length : 'none');
+            } else {
+                console.error('❌ simpleAlbum object not found');
+            }
+        }
+        
+        // Catch all errors
+        window.addEventListener('error', function(e) {
+            console.error('Global error:', e.message, 'at', e.filename + ':' + e.lineno);
+        });
+        
+        console.log('🔧 Debug page loaded');
+    </script>
+    
+    <!-- Load the actual scripts -->
+    <script src="assets/js/anita-photos-real.js"></script>
+    <script src="assets/js/simple-album.js"></script>
+</body>
+</html>
