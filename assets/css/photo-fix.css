@@ -106,6 +106,101 @@ button,
     z-index: 999 !important;
 }
 
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3rem !important;
+    }
+    
+    .hero p {
+        font-size: 1.2rem !important;
+    }
+    
+    .hero-btn {
+        padding: 1rem 2rem !important;
+        font-size: 1.1rem !important;
+    }
+}
+
+/* HERO SECTION PERFETTA */
+.hero {
+    position: relative !important;
+    background: linear-gradient(135deg, #F5F5DC, #FAEBD7) !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 2rem !important;
+}
+
+.hero-content {
+    position: relative !important;
+    z-index: 10 !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
+}
+
+.hero h1 {
+    font-family: 'Great Vibes', cursive !important;
+    font-size: clamp(3rem, 8vw, 6rem) !important;
+    color: #8B4513 !important;
+    margin-bottom: 1.5rem !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1) !important;
+    line-height: 1.2 !important;
+}
+
+.hero p {
+    font-family: 'Playfair Display', serif !important;
+    font-size: clamp(1.2rem, 3vw, 1.8rem) !important;
+    color: #5D4037 !important;
+    margin-bottom: 2.5rem !important;
+    line-height: 1.6 !important;
+}
+
+.hero-btn, .cta-button {
+    background: linear-gradient(135deg, #8B4513, #A0522D) !important;
+    color: white !important;
+    padding: 1.2rem 2.5rem !important;
+    border: none !important;
+    border-radius: 50px !important;
+    font-size: 1.3rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3) !important;
+    font-family: 'Playfair Display', serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    position: relative !important;
+    z-index: 999 !important;
+    pointer-events: auto !important;
+}
+
+.hero-btn:hover, .cta-button:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 35px rgba(139, 69, 19, 0.4) !important;
+    background: linear-gradient(135deg, #A0522D, #CD853F) !important;
+}
+
+/* FORZA CLICK EVENTS SU TUTTO */
+.gallery-item,
+.photo-frame,
+.gallery-photo,
+.album-photo,
+.photo-container,
+.hero-btn,
+.cta-button,
+button,
+[onclick] {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    position: relative !important;
+    z-index: 999 !important;
+}
+
 /* ALBUM OVERLAY PERFETTO */
 .album-overlay {
     position: fixed !important;
