@@ -33,7 +33,6 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/photobook.css">
-    <link rel="stylesheet" href="assets/css/photo-fix.css">
 </head>
 <body>
     <!-- Loading Screen -->
@@ -304,92 +303,30 @@
         </div>
     </div>
 
-    <!-- Scripts - Ordine ottimizzato per Render.com -->
+    <!-- Scripts - Sistema semplice e funzionante -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/js/demo-photos.js"></script>
-    <script src="assets/js/anita-photos-clean.js"></script>
-    <script src="assets/js/photo-optimizer.js"></script>
-    <script src="assets/js/wedding-album-working.js"></script>
+    <script src="assets/js/album-simple.js"></script>
     <script>
-        // Inizializzazione e rimozione schermata di caricamento
-        console.log('🔧 Script di inizializzazione caricato');
+        // Sistema semplificato
+        console.log('🔧 Inizializzazione semplice');
         
-        // Forza rimozione loading immediata se troppo lenta
+        // Rimuovi loading screen
         setTimeout(function() {
             const loadingScreen = document.getElementById('loading-screen');
             if (loadingScreen) {
-                console.log('🔧 Forzo rimozione loading screen (2 secondi)');
                 loadingScreen.style.opacity = '0';
-                loadingScreen.style.transition = 'opacity 0.3s ease-out';
-                
-                setTimeout(function() {
-                    loadingScreen.style.display = 'none';
-                    console.log('✅ Loading screen rimosso (forzato)');
-                }, 300);
+                setTimeout(() => loadingScreen.style.display = 'none', 300);
             }
-        }, 2000);
+        }, 1000);
         
+        // Inizializza AOS
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🔧 DOM caricato - inizializzando...');
-            
-            // Rimuovi loading screen dopo DOM ready
-            setTimeout(function() {
-                const loadingScreen = document.getElementById('loading-screen');
-                if (loadingScreen && loadingScreen.style.display !== 'none') {
-                    console.log('🔧 Rimuovo loading screen (DOM ready)');
-                    loadingScreen.style.opacity = '0';
-                    loadingScreen.style.transition = 'opacity 0.5s ease-out';
-                    
-                    setTimeout(function() {
-                        loadingScreen.style.display = 'none';
-                        console.log('✅ Loading screen rimosso (DOM ready)');
-                    }, 500);
-                }
-            }, 500);
-            
-            // Inizializza AOS se disponibile
             if (typeof AOS !== 'undefined') {
                 AOS.init({
                     duration: 700,
-                    easing: 'ease-out-cubic',
-                    once: true,
-                    offset: 100
+                    once: true
                 });
-                console.log('✅ AOS inizializzato');
             }
-            
-            // Verifica caricamento componenti
-            setTimeout(function() {
-                if (typeof anitaPhotos !== 'undefined') {
-                    console.log('✅ anitaPhotos caricato:', anitaPhotos.length, 'foto');
-                } else {
-                    console.warn('⚠️ anitaPhotos non caricato');
-                }
-                
-                if (typeof simpleAlbum !== 'undefined') {
-                    console.log('✅ simpleAlbum inizializzato');
-                } else {
-                    console.warn('⚠️ simpleAlbum non inizializzato');
-                }
-                
-                if (typeof openSpectacularPresentation === 'function') {
-                    console.log('✅ openSpectacularPresentation pronto');
-                } else {
-                    console.warn('⚠️ openSpectacularPresentation non trovato');
-                }
-            }, 1000);
-        });
-        
-        // Backup: forza rimozione loading al caricamento completo della pagina
-        window.addEventListener('load', function() {
-            console.log('🔧 Window load event - controllo loading screen');
-            setTimeout(function() {
-                const loadingScreen = document.getElementById('loading-screen');
-                if (loadingScreen && loadingScreen.style.display !== 'none') {
-                    console.log('🔧 Forzo rimozione finale loading screen');
-                    loadingScreen.style.display = 'none';
-                }
-            }, 1000);
         });
     </script>
 </body>
