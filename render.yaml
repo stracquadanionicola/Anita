@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: anita-album
+    env: python
+    buildCommand: chmod +x build.sh && ./build.sh
+    startCommand: python3 -m http.server $PORT
+    plan: free
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: 1
+      - key: PORT
+        generateValue: true
